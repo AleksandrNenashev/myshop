@@ -6,8 +6,12 @@
  * @param $actionName название функции обработки страницы
  * @return void
  */
-function loadPage($controllerName, $actionName){
+function loadPage($smarty, $controllerName, $actionName = 'index'){
     include_once PATHPREFIX .$controllerName. PATHPOSTFIX;
     $function = $actionName . 'Action';
-    $function();
+    $function($smarty);
+}
+
+function loadTemplate($smarty, $templateName){
+    $smarty->display($templateName . TMPLTPOSTFIX);
 }
