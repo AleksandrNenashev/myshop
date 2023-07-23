@@ -2,7 +2,10 @@
 /**
  * Контроллер галавной страницы
  */
+include_once '../models/CategoriesModel.php';
 function indexAction($smarty){
-    $smarty->assign('pageTitle', 'Это главная страница');
+    $allCategories = getAllCategories();
+    $smarty->assign('pageTitle', 'Главная страница');
+    $smarty->assign('allCategories', $allCategories);
     loadTemplate($smarty, 'index');
 }

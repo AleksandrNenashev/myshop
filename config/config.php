@@ -5,6 +5,11 @@
 const PATHPREFIX = '../controllers/';
 const PATHPOSTFIX = 'Controller.php';
 
+const DB_HOST = 'localhost';
+const DB_NAME = 'myshop';
+const DB_USERNAME = 'root';
+const DB_PASSWORD = '';
+
 $templateFolder = 'default';
 
 define('TMPLTPREFIX', "../views/{$templateFolder}/");
