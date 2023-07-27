@@ -1,6 +1,6 @@
 <?php
 /**
- * Контроллер галавной страницы
+ * Контроллер главной страницы
  */
 include_once '../models/CategoriesModel.php';
 function indexAction($smarty){

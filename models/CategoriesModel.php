@@ -19,25 +19,42 @@
     }
  }
 /**
- * Undocumented function
+ * Получение категорий товаров из БД
  *
  * @return array/bool
  */
  function getAllCategories(){
     $sql = 'SELECT * FROM categories WHERE parent_id = 0';
     $link = createConnection();
-
     $result = mysqli_query($link, $sql);
-
+    $smartyArr = array();
+    
     if($result === false){
         return false;
     }else{
         while($row = mysqli_fetch_array($result)){
-            //echo("<br>Уровень: " . $row['id'] . ";<br>Родитель: " . $row['parent_id'] . "<br> Имя категории: " . $row['name_ru']);
+            $recChildren = getChildren($row['id']);
+            if($recChildren){
+                $row['children'] = $recChildren;
+            }
             $smartyArr[] = $row;
         }
     }
     return $smartyArr;
+ }
+
+ function getChildren($recID){
+    $sql = 'SELECT * FROM categories WHERE parent_id = ' . $recID;
+    $link = createConnection();
+    $result = mysqli_query($link, $sql);
+    return createSmartyRecArr($result);
+    /*if($result === false){
+        echo "Ошибка";
+    }else{
+        while($row = mysqli_fetch_array($result)){
+            echo $row['name_ru'];
+        }
+    }*/
  }
 
 
