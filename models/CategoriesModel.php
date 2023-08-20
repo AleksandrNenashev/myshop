@@ -5,7 +5,7 @@
 
  /**
   * Создание подключения к БД
-  * @return mysql/bool
+  * @return mysqli/bool
   */
 
  function createConnection(){
@@ -43,8 +43,8 @@
     return $smartyArr;
  }
 
- function getChildren($recID){
-    $sql = 'SELECT * FROM categories WHERE parent_id = ' . $recID;
+ function getChildren($recId){
+    $sql = 'SELECT * FROM categories WHERE parent_id = ' . $recId;
     $link = createConnection();
     $result = mysqli_query($link, $sql);
     return createSmartyRecArr($result);
@@ -57,7 +57,18 @@
     }*/
  }
 
-
+function getAllCategoriesById($id){
+    //защищаемся от SQL-инъекций, приводит любое значение к integer
+    $categoryId = intval($id);
+    $sql = 'SELECT * FROM categories WHERE id = ' . $categoryId;
+    $link = createConnection();
+    $result = mysqli_query($link, $sql);
+    if($result === false){
+        echo "Ошибка: " . mysqli_error($link);
+    }
+    //возвращаем ассоциативный массив
+    return mysqli_fetch_assoc($result);
+}
 
 
 

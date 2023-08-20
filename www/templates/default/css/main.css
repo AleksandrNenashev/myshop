@@ -7,3 +7,18 @@ body{
     font-family: Verdana;
     overflow-y: hidden;
 }
+.wrapper{
+    display: flex;
+    width: 100%;
+}
+#content{
+    width: 800px;
+    min-height: 300px;
+    top: 0;
+    right: 0;
+    display: inline-block;
+}
+.card{
+    display: inline-block;
+    margin: 8px;
+}

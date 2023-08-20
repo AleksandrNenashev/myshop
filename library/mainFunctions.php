@@ -7,13 +7,13 @@
  * @return void
  */
 function loadPage($smarty, $controllerName, $actionName = 'index'){
-    include_once PATHPREFIX .$controllerName. PATHPOSTFIX;
+    include_once PATHPREFIX.$controllerName.PATHPOSTFIX;
     $function = $actionName . 'Action';
     $function($smarty);
 }
 
 function loadTemplate($smarty, $templateName){
-    $smarty->display($templateName . TMPLTPOSTFIX);
+    $smarty->display($templateName.TMPLTPOSTFIX);
 }
 
 function createSmartyRecArr($record){
